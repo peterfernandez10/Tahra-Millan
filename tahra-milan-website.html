@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tahra Milan — Premium Organic Ingredients, Sourced with Provenance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#141F17;
+    --ink-2:#1D2B21;
+    --ivory:#F6F1E4;
+    --paper:#FBF8F1;
+    --sand:#E8DFC5;
+    --sand-2:#DDD0AC;
+    --olive:#6E7A52;
+    --olive-deep:#4B5738;
+    --saffron:#C4832C;
+    --saffron-light:#E3A552;
+    --clay:#96472A;
+    --line: rgba(20,31,23,0.14);
+    --line-light: rgba(246,241,228,0.2);
+    --font-display: 'Fraunces', serif;
+    --font-body: 'Manrope', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block; max-width:100%; height:auto;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  .wrap{max-width:1280px; margin:0 auto; padding:0 40px;}
+  @media (max-width:768px){ .wrap{padding:0 22px;} }
+
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--saffron);
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:""; width:22px; height:1px; background:var(--saffron);}
+
+  h1,h2,h3,h4{font-family:var(--font-display); font-weight:500; line-height:1.05; letter-spacing:-0.01em;}
+
+  /* ---------- Focus visibility ---------- */
+  a:focus-visible, button:focus-visible{outline:2px solid var(--saffron); outline-offset:3px;}
+
+  /* ================= NAV ================= */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:26px 0;
+    transition:padding .4s ease, background .4s ease, box-shadow .4s ease;
+  }
+  header.scrolled{
+    padding:14px 0;
+    background:rgba(20,31,23,0.92);
+    backdrop-filter:blur(10px);
+    box-shadow:0 8px 30px rgba(0,0,0,0.18);
+  }
+  nav{display:flex; align-items:center; justify-content:space-between;}
+  .logo{
+    font-family:var(--font-display); font-size:21px; letter-spacing:0.04em;
+    color:var(--ivory); display:flex; flex-direction:column; line-height:1;
+  }
+  .logo span{font-family:var(--font-mono); font-size:9px; letter-spacing:0.28em; color:var(--saffron); margin-top:5px; text-transform:uppercase;}
+  .nav-links{display:flex; align-items:center; gap:38px;}
+  .nav-links a{
+    font-size:13.5px; color:var(--ivory); opacity:0.82;
+    position:relative; padding-bottom:4px; letter-spacing:0.01em;
+  }
+  .nav-links a::after{
+    content:""; position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--saffron);
+    transition:width .35s ease;
+  }
+  .nav-links a:hover{opacity:1;}
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    font-family:var(--font-mono); font-size:12px; letter-spacing:0.06em;
+    color:var(--ink); background:var(--saffron); padding:11px 22px; border-radius:100px;
+    border:1px solid var(--saffron); transition:all .3s ease; white-space:nowrap;
+  }
+  .nav-cta:hover{background:transparent; color:var(--saffron);}
+  .nav-toggle{display:none;}
+  @media (max-width:900px){
+    .nav-links{display:none;}
+    .nav-toggle{display:block; color:var(--ivory); background:none; border:none; font-size:22px; cursor:pointer;}
+  }
+
+  /* ================= HERO ================= */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    background:var(--ink);
+    color:var(--ivory);
+    display:flex; align-items:center;
+    overflow:hidden;
+    padding-top:110px;
+  }
+  .hero-bg{
+    position:absolute; inset:0;
+    background-image:url('https://images.unsplash.com/photo-1525289722380-f5bf1653d504?auto=format&fit=crop&w=2200&q=80');
+    background-size:cover; background-position:center;
+    opacity:0.34;
+    transform:scale(1.08);
+    animation:heroZoom 22s ease-in-out infinite alternate;
+  }
+  @keyframes heroZoom{ from{transform:scale(1.08);} to{transform:scale(1.16);} }
+  .hero::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(20,31,23,0.55) 0%, rgba(20,31,23,0.86) 60%, var(--ink) 100%);
+  }
+  .hero-grain{
+    position:absolute; inset:0; z-index:2; pointer-events:none; opacity:0.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .hero-inner{position:relative; z-index:3; width:100%;}
+  .hero-grid{display:grid; grid-template-columns:1.25fr 0.75fr; gap:60px; align-items:end;}
+  @media (max-width:980px){ .hero-grid{grid-template-columns:1fr;} }
+
+  .hero-title{
+    font-size:clamp(42px, 6.2vw, 84px);
+    font-weight:400;
+    overflow:hidden;
+  }
+  .hero-title .line{display:block; overflow:hidden;}
+  .hero-title .line span{
+    display:inline-block;
+    transform:translateY(115%);
+    animation:riseUp 1.1s cubic-bezier(.22,1,.36,1) forwards;
+  }
+  .hero-title .line:nth-child(1) span{animation-delay:.15s;}
+  .hero-title .line:nth-child(2) span{animation-delay:.32s;}
+  .hero-title .line:nth-child(3) span{animation-delay:.48s; color:var(--saffron-light); font-style:italic;}
+  @keyframes riseUp{ to{transform:translateY(0);} }
+
+  .hero-sub{
+    margin-top:28px; max-width:460px; font-size:16.5px; line-height:1.7; color:rgba(246,241,228,0.78);
+    opacity:0; animation:fadeUp .9s ease forwards; animation-delay:0.9s;
+  }
+  .hero-actions{margin-top:36px; display:flex; gap:16px; align-items:center; flex-wrap:wrap;
+    opacity:0; animation:fadeUp .9s ease forwards; animation-delay:1.05s;}
+  .btn-primary{
+    font-family:var(--font-mono); font-size:12.5px; letter-spacing:0.06em;
+    background:var(--saffron); color:var(--ink); padding:15px 28px; border-radius:100px;
+    border:1px solid var(--saffron); transition:all .3s ease; display:inline-flex; align-items:center; gap:10px;
+  }
+  .btn-primary:hover{background:var(--saffron-light); transform:translateY(-2px);}
+  .btn-ghost{
+    font-family:var(--font-mono); font-size:12.5px; letter-spacing:0.06em; color:var(--ivory);
+    padding:15px 8px; border-bottom:1px solid var(--line-light); transition:border-color .3s ease;
+  }
+  .btn-ghost:hover{border-color:var(--saffron);}
+  @keyframes fadeUp{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);} }
+
+  .hero-side{position:relative; opacity:0; animation:fadeIn 1.2s ease forwards; animation-delay:1.2s;}
+  @keyframes fadeIn{ to{opacity:1;} }
+  .stamp{
+    width:150px; height:150px; border-radius:50%;
+    border:1px dashed rgba(246,241,228,0.4);
+    display:flex; align-items:center; justify-content:center;
+    position:relative; margin-left:auto;
+    font-family:var(--font-mono); color:var(--ivory);
+  }
+  .stamp .stamp-inner{
+    width:112px; height:112px; border-radius:50%; border:1px solid rgba(246,241,228,0.55);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+    gap:2px;
+  }
+  .stamp .stamp-num{font-family:var(--font-display); font-size:26px; color:var(--saffron-light);}
+  .stamp .stamp-label{font-size:8.5px; letter-spacing:0.12em; text-transform:uppercase; opacity:0.75;}
+  .hero-float-imgs{margin-top:26px; display:flex; gap:14px; justify-content:flex-end;}
+  .float-card{
+    width:118px; height:150px; border-radius:6px; overflow:hidden;
+    border:1px solid rgba(246,241,228,0.25);
+    transition:transform .5s cubic-bezier(.22,1,.36,1);
+  }
+  .float-card img{width:100%; height:100%; object-fit:cover;}
+  .float-card:nth-child(2){margin-top:26px;}
+
+  .scroll-cue{
+    position:absolute; bottom:30px; left:40px; z-index:3;
+    display:flex; align-items:center; gap:10px; color:rgba(246,241,228,0.6);
+    font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em;
+  }
+  .scroll-cue .line{width:1px; height:34px; background:rgba(246,241,228,0.35); position:relative; overflow:hidden;}
+  .scroll-cue .line::after{
+    content:""; position:absolute; top:-100%; left:0; width:100%; height:100%; background:var(--saffron);
+    animation:scrollLine 2s ease-in-out infinite;
+  }
+  @keyframes scrollLine{ 0%{top:-100%;} 60%{top:100%;} 100%{top:100%;} }
+
+  /* ================= MARQUEE ================= */
+  .marquee-wrap{
+    background:var(--olive-deep); color:var(--ivory);
+    border-top:1px solid rgba(246,241,228,0.15); border-bottom:1px solid rgba(246,241,228,0.15);
+    overflow:hidden; padding:18px 0;
+  }
+  .marquee-track{display:flex; width:max-content; animation:marquee 34s linear infinite;}
+  .marquee-track:hover{animation-play-state:paused;}
+  @keyframes marquee{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+  .marquee-item{
+    display:flex; align-items:center; gap:14px; padding:0 34px;
+    font-family:var(--font-mono); font-size:13px; letter-spacing:0.04em; white-space:nowrap;
+  }
+  .marquee-item .origin{color:var(--saffron-light); opacity:0.9;}
+  .marquee-item .dot{width:5px; height:5px; border-radius:50%; background:var(--saffron); opacity:0.6;}
+
+  /* ================= SECTION GENERIC ================= */
+  section{padding:120px 0;}
+  @media (max-width:768px){ section{padding:80px 0;} }
+  .section-head{max-width:640px; margin-bottom:64px;}
+  .section-head h2{font-size:clamp(30px,4vw,46px); margin-top:16px;}
+  .section-head p{margin-top:18px; font-size:16px; line-height:1.7; color:#4A5147;}
+
+  [data-reveal]{opacity:0; transform:translateY(28px); transition:opacity .9s cubic-bezier(.22,1,.36,1), transform .9s cubic-bezier(.22,1,.36,1);}
+  [data-reveal].in-view{opacity:1; transform:translateY(0);}
+  [data-reveal="stamp"]{transform:translateY(20px) rotate(-8deg); opacity:0;}
+  [data-reveal="stamp"].in-view{transform:translateY(0) rotate(0deg); opacity:1;}
+
+  /* ================= WHO WE SERVE ================= */
+  .serve-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  @media (max-width:900px){ .serve-grid{grid-template-columns:1fr;} }
+  .serve-card{
+    background:var(--ivory); border:1px solid var(--line); border-radius:4px; overflow:hidden;
+    transition:transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s ease;
+  }
+  .serve-card:hover{transform:translateY(-8px); box-shadow:0 26px 50px rgba(20,31,23,0.14);}
+  .serve-img{height:220px; overflow:hidden;}
+  .serve-img img{width:100%; height:100%; object-fit:cover; transition:transform .8s cubic-bezier(.22,1,.36,1);}
+  .serve-card:hover .serve-img img{transform:scale(1.08);}
+  .serve-body{padding:30px 28px 32px;}
+  .serve-num{font-family:var(--font-mono); font-size:12px; color:var(--saffron); letter-spacing:0.08em;}
+  .serve-body h3{font-size:23px; margin-top:10px; font-weight:500;}
+  .serve-body p{margin-top:12px; font-size:14.5px; line-height:1.7; color:#4A5147;}
+  .serve-list{margin-top:18px; display:flex; flex-direction:column; gap:8px;}
+  .serve-list li{font-size:13px; color:var(--olive-deep); display:flex; gap:9px; align-items:baseline;}
+  .serve-list li::before{content:"—"; color:var(--saffron); flex-shrink:0;}
+
+  /* ================= WHY DIFFERENT (rows) ================= */
+  .diff-row{
+    display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center;
+    padding:56px 0; border-top:1px solid var(--line);
+  }
+  .diff-row:last-child{border-bottom:1px solid var(--line);}
+  @media (max-width:900px){ .diff-row{grid-template-columns:1fr; gap:30px;} .diff-row.rev .diff-img{order:-1;} }
+  .diff-row.rev .diff-img{order:2;}
+  .diff-img{border-radius:4px; overflow:hidden; aspect-ratio:4/3; position:relative;}
+  .diff-img img{width:100%; height:100%; object-fit:cover; transition:transform .9s cubic-bezier(.22,1,.36,1);}
+  .diff-row:hover .diff-img img{transform:scale(1.05);}
+  .diff-index{font-family:var(--font-mono); font-size:12px; color:var(--saffron); letter-spacing:0.1em;}
+  .diff-text h3{font-size:clamp(24px,2.6vw,32px); margin-top:14px; font-weight:500;}
+  .diff-text p{margin-top:16px; font-size:15.5px; line-height:1.75; color:#4A5147; max-width:440px;}
+
+  /* ================= PROVENANCE MAP ================= */
+  .map-section{background:var(--ink); color:var(--ivory); position:relative; overflow:hidden;}
+  .map-section .section-head p{color:rgba(246,241,228,0.7);}
+  .map-section .eyebrow{color:var(--saffron-light);}
+  .map-section .eyebrow::before{background:var(--saffron-light);}
+  .map-canvas{position:relative; height:520px; margin-top:20px;}
+  .map-canvas svg{width:100%; height:100%; opacity:0.5;}
+  .map-pin{
+    position:absolute; display:flex; flex-direction:column; align-items:center; gap:8px;
+    transform:translate(-50%,-50%);
+  }
+  .map-pin .dot{
+    width:11px; height:11px; border-radius:50%; background:var(--saffron); position:relative;
+    box-shadow:0 0 0 4px rgba(196,131,44,0.25);
+  }
+  .map-pin .dot::after{
+    content:""; position:absolute; inset:-8px; border-radius:50%; border:1px solid var(--saffron);
+    animation:pulse 2.6s ease-out infinite;
+  }
+  @keyframes pulse{ 0%{transform:scale(0.6); opacity:0.9;} 100%{transform:scale(2.2); opacity:0;} }
+  .map-pin .tag{
+    font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.05em; white-space:nowrap;
+    background:rgba(20,31,23,0.85); border:1px solid rgba(246,241,228,0.2); padding:5px 10px; border-radius:100px;
+  }
+  .map-pin .tag .country{color:var(--saffron-light);}
+
+  /* ================= PRODUCT LINE ================= */
+  .product-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
+  @media (max-width:1080px){ .product-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .product-grid{grid-template-columns:1fr;} }
+  .product-card{
+    position:relative; border:1px solid var(--line); border-radius:4px; overflow:hidden; background:var(--paper);
+    transition:transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s ease;
+  }
+  .product-card:hover{transform:translateY(-6px); box-shadow:0 22px 44px rgba(20,31,23,0.14);}
+  .product-img{height:210px; overflow:hidden; position:relative;}
+  .product-img img{width:100%; height:100%; object-fit:cover; transition:transform .8s cubic-bezier(.22,1,.36,1);}
+  .product-card:hover .product-img img{transform:scale(1.1);}
+  .product-badge{
+    position:absolute; top:12px; right:12px; width:46px; height:46px; border-radius:50%;
+    background:rgba(20,31,23,0.82); border:1px dashed rgba(246,241,228,0.5);
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    font-family:var(--font-mono); font-size:8px; color:var(--ivory); letter-spacing:0.04em;
+    transition:transform .5s cubic-bezier(.22,1,.36,1);
+  }
+  .product-card:hover .product-badge{transform:rotate(18deg);}
+  .product-body{padding:20px 20px 24px;}
+  .product-body .latin{font-family:var(--font-display); font-style:italic; font-size:11.5px; color:var(--olive); opacity:0.8;}
+  .product-body h4{font-size:19px; margin-top:6px; font-weight:500;}
+  .product-meta{margin-top:12px; display:flex; justify-content:space-between; align-items:center; font-family:var(--font-mono); font-size:10.5px; color:var(--olive-deep); letter-spacing:0.04em;}
+  .product-meta .origin{color:var(--clay);}
+
+  /* ================= STATS ================= */
+  .stats-strip{background:var(--sand); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .stats-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px; padding:64px 0;}
+  @media (max-width:768px){ .stats-grid{grid-template-columns:repeat(2,1fr); gap:36px;} }
+  .stat{text-align:left;}
+  .stat .num{font-family:var(--font-display); font-size:clamp(36px,4.4vw,58px); color:var(--clay); font-weight:400;}
+  .stat .label{margin-top:8px; font-family:var(--font-mono); font-size:11.5px; letter-spacing:0.06em; color:var(--olive-deep); text-transform:uppercase;}
+
+  /* ================= CTA ================= */
+  .cta-section{
+    position:relative; background:var(--ink); color:var(--ivory); overflow:hidden;
+    padding:140px 0;
+  }
+  .cta-bg{
+    position:absolute; inset:0; background-image:url('https://images.unsplash.com/photo-1670121180530-cfcba4438038?auto=format&fit=crop&w=2000&q=80');
+    background-size:cover; background-position:center; opacity:0.24;
+  }
+  .cta-section::after{content:""; position:absolute; inset:0; background:linear-gradient(120deg, rgba(20,31,23,0.92), rgba(75,87,56,0.75));}
+  .cta-inner{position:relative; z-index:2; max-width:680px;}
+  .cta-inner h2{font-size:clamp(32px,4.6vw,52px);}
+  .cta-inner p{margin-top:20px; font-size:16.5px; line-height:1.75; color:rgba(246,241,228,0.78); max-width:520px;}
+  .cta-actions{margin-top:38px; display:flex; gap:16px; flex-wrap:wrap;}
+
+  /* ================= FOOTER ================= */
+  footer{background:var(--olive-deep); color:var(--ivory); padding:80px 0 30px;}
+  .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:50px; padding-bottom:60px; border-bottom:1px solid rgba(246,241,228,0.15);}
+  @media (max-width:860px){ .footer-grid{grid-template-columns:1fr 1fr; row-gap:40px;} }
+  .footer-brand .logo{color:var(--ivory);}
+  .footer-brand p{margin-top:18px; font-size:14px; line-height:1.7; color:rgba(246,241,228,0.65); max-width:280px;}
+  .footer-col h5{font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--saffron-light); margin-bottom:18px;}
+  .footer-col ul{display:flex; flex-direction:column; gap:11px;}
+  .footer-col a, .footer-col p{font-size:14px; color:rgba(246,241,228,0.75); transition:color .3s ease;}
+  .footer-col a:hover{color:var(--saffron-light);}
+  .footer-bottom{display:flex; justify-content:space-between; align-items:center; padding-top:26px; flex-wrap:wrap; gap:14px;}
+  .footer-bottom p{font-family:var(--font-mono); font-size:11px; color:rgba(246,241,228,0.5); letter-spacing:0.03em;}
+  .footer-stamp{width:60px; height:60px; border-radius:50%; border:1px dashed rgba(246,241,228,0.35); display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-size:8px; color:rgba(246,241,228,0.6); text-align:center; letter-spacing:0.05em;}
+
+  ::selection{background:var(--saffron); color:var(--ink);}
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="wrap">
+    <nav>
+      <a href="#top" class="logo">TAHRA MILAN<span>Ingredient Trading Co.</span></a>
+      <div class="nav-links">
+        <a href="#serve">Who We Serve</a>
+        <a href="#difference">Difference</a>
+        <a href="#sourcing">Sourcing</a>
+        <a href="#ingredients">Ingredients</a>
+        <a href="#contact" class="nav-cta">Request Catalog</a>
+      </div>
+      <button class="nav-toggle" aria-label="Menu">☰</button>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Est. supplier to manufacturers &amp; wellness brands worldwide</div>
+        <h1 class="hero-title">
+          <span class="line"><span>Premium organic</span></span>
+          <span class="line"><span>ingredients, sourced</span></span>
+          <span class="line"><span>with provenance.</span></span>
+        </h1>
+        <p class="hero-sub">Tahra Milan connects manufacturers, health &amp; wellness brands, and retailers to a growing library of globally sourced botanicals — every lot traceable to the farm, region, and harvest it came from.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Request the Catalog →</a>
+          <a href="#ingredients" class="btn-ghost">View the Ingredient Line</a>
+        </div>
+      </div>
+      <div class="hero-side">
+        <div class="stamp">
+          <div class="stamp-inner">
+            <div class="stamp-num">18</div>
+            <div class="stamp-label">Countries of Origin</div>
+          </div>
+        </div>
+        <div class="hero-float-imgs">
+          <div class="float-card"><img src="https://images.unsplash.com/photo-1543376798-62217a8d85cc?auto=format&fit=crop&w=500&q=80" alt="Bowl of ground turmeric"></div>
+          <div class="float-card"><img src="https://images.unsplash.com/photo-1691391611977-198acc8d43b2?auto=format&fit=crop&w=500&q=80" alt="Wooden bowl of dried botanicals"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>SCROLL</span><span class="line"></span></div>
+</section>
+
+<!-- ================= MARQUEE ================= -->
+<div class="marquee-wrap">
+  <div class="marquee-track" id="marqueeTrack">
+    <!-- duplicated via JS -->
+  </div>
+</div>
+
+<!-- ================= WHO WE SERVE ================= -->
+<section id="serve">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow">Who We Serve</div>
+      <h2>Three partners. One standard of sourcing.</h2>
+      <p>Whatever you're building — a formulation, a finished product, or a shelf — Tahra Milan supplies the raw material and the paperwork to back it up.</p>
+    </div>
+    <div class="serve-grid">
+      <div class="serve-card" data-reveal>
+        <div class="serve-img"><img src="https://images.unsplash.com/photo-1560579183-1780ab036d65?auto=format&fit=crop&w=800&q=80" alt="Burlap sacks of raw ingredients ready for bulk shipment"></div>
+        <div class="serve-body">
+          <div class="serve-num">01 / MANUFACTURERS</div>
+          <h3>Formulators &amp; production lines</h3>
+          <p>Bulk volumes with consistent specification, lot-to-lot, so your formulation performs the same way every time it's made.</p>
+          <ul class="serve-list">
+            <li>Full spec sheets &amp; COAs on request</li>
+            <li>Custom particle size &amp; grade</li>
+            <li>Volume pricing, scheduled delivery</li>
+          </ul>
+        </div>
+      </div>
+      <div class="serve-card" data-reveal>
+        <div class="serve-img"><img src="https://images.unsplash.com/photo-1543376798-62217a8d85cc?auto=format&fit=crop&w=800&q=80" alt="Bowl of turmeric powder representing wellness formulation"></div>
+        <div class="serve-body">
+          <div class="serve-num">02 / HEALTH &amp; WELLNESS BRANDS</div>
+          <h3>Supplement &amp; wellness makers</h3>
+          <p>Ingredients your customers can look up — organic certification, origin, and testing, ready to put on the label.</p>
+          <ul class="serve-list">
+            <li>Certified-organic ingredient options</li>
+            <li>Traceability back to origin farm</li>
+            <li>Small-batch trial quantities available</li>
+          </ul>
+        </div>
+      </div>
+      <div class="serve-card" data-reveal>
+        <div class="serve-img"><img src="https://images.unsplash.com/photo-1601585528379-0cfb189fa359?auto=format&fit=crop&w=800&q=80" alt="Assorted spices displayed for retail"></div>
+        <div class="serve-body">
+          <div class="serve-num">03 / RETAILERS</div>
+          <h3>Specialty &amp; grocery retail</h3>
+          <p>Packaged and bulk-bin ready ingredients with the sourcing story your shoppers are asking for.</p>
+          <ul class="serve-list">
+            <li>Retail-ready packaging formats</li>
+            <li>Point-of-sale origin materials</li>
+            <li>Reliable restock lead times</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY DIFFERENT ================= -->
+<section id="difference" style="background:var(--ivory);">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow">Why Tahra Milan</div>
+      <h2>What sets our sourcing apart.</h2>
+    </div>
+
+    <div class="diff-row" data-reveal>
+      <div>
+        <div class="diff-index">01</div>
+        <div class="diff-text">
+          <h3>A sourcing network, not a spot market</h3>
+          <p>We work directly with growers and cooperatives across 18 countries — long-term relationships that hold up when a single harvest doesn't.</p>
+        </div>
+      </div>
+      <div class="diff-img"><img src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=900&q=80" alt="Shipping containers at a port, representing the global sourcing network"></div>
+    </div>
+
+    <div class="diff-row rev" data-reveal>
+      <div>
+        <div class="diff-index">02</div>
+        <div class="diff-text">
+          <h3>Certified organic, and traceable to prove it</h3>
+          <p>Every lot carries documentation back to the region and harvest it came from — not just a certificate, but a record you can hand to your own customers.</p>
+        </div>
+      </div>
+      <div class="diff-img"><img src="https://images.unsplash.com/photo-1533792344354-ed5e8fc12494?auto=format&fit=crop&w=900&q=80" alt="Organic plants growing in cultivation"></div>
+    </div>
+
+    <div class="diff-row" data-reveal>
+      <div>
+        <div class="diff-index">03</div>
+        <div class="diff-text">
+          <h3>Built to hold specification at scale</h3>
+          <p>Testing and blending protocols keep every shipment within the same tolerances — whether you're ordering a pallet or a container.</p>
+        </div>
+      </div>
+      <div class="diff-img"><img src="https://images.unsplash.com/photo-1678182451047-196f22a4143e?auto=format&fit=crop&w=900&q=80" alt="Stacked shipping containers representing scale and consistency"></div>
+    </div>
+
+    <div class="diff-row rev" data-reveal>
+      <div>
+        <div class="diff-index">04</div>
+        <div class="diff-text">
+          <h3>A partner who picks up the phone</h3>
+          <p>A dedicated account contact who knows your specification, your timeline, and your product — not a ticket queue.</p>
+        </div>
+      </div>
+      <div class="diff-img"><img src="https://images.unsplash.com/photo-1601585528379-0cfb189fa359?auto=format&fit=crop&w=900&q=80" alt="Assorted spices arranged on a wooden table"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROVENANCE MAP ================= -->
+<section id="sourcing" class="map-section">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow">Sourcing Network</div>
+      <h2>Eighteen countries. One paper trail.</h2>
+      <p>A sample of the regions we source from directly — each origin logged, tested, and traceable back to the growers we work with.</p>
+    </div>
+    <div class="map-canvas" data-reveal>
+      <svg viewBox="0 0 1000 420" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+        <path d="M60,180 Q140,90 260,110 T460,90 Q560,80 640,130 T820,140 Q900,150 950,190" stroke="#F6F1E4" stroke-width="0.6" stroke-dasharray="2 6" fill="none"/>
+        <path d="M120,260 Q220,320 340,300 T560,310 Q680,300 760,250 T920,230" stroke="#F6F1E4" stroke-width="0.6" stroke-dasharray="2 6" fill="none"/>
+        <circle cx="500" cy="210" r="180" stroke="#F6F1E4" stroke-width="0.4" fill="none" opacity="0.35"/>
+        <circle cx="500" cy="210" r="280" stroke="#F6F1E4" stroke-width="0.4" fill="none" opacity="0.2"/>
+      </svg>
+      <div class="map-pin" style="top:38%; left:12%;"><span class="dot"></span><span class="tag"><span class="country">Peru</span> · Cacao</span></div>
+      <div class="map-pin" style="top:62%; left:24%;"><span class="dot"></span><span class="tag"><span class="country">Morocco</span> · Saffron</span></div>
+      <div class="map-pin" style="top:30%; left:46%;"><span class="dot"></span><span class="tag"><span class="country">India</span> · Turmeric</span></div>
+      <div class="map-pin" style="top:70%; left:52%;"><span class="dot"></span><span class="tag"><span class="country">Madagascar</span> · Cinnamon</span></div>
+      <div class="map-pin" style="top:44%; left:68%;"><span class="dot"></span><span class="tag"><span class="country">Sri Lanka</span> · Ginger</span></div>
+      <div class="map-pin" style="top:24%; left:82%;"><span class="dot"></span><span class="tag"><span class="country">Japan</span> · Matcha</span></div>
+      <div class="map-pin" style="top:60%; left:88%;"><span class="dot"></span><span class="tag"><span class="country">Vietnam</span> · Black Pepper</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRODUCT LINE ================= -->
+<section id="ingredients" style="background:var(--paper);">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow">The Ingredient Line</div>
+      <h2>A growing library of botanicals.</h2>
+      <p>Eight of the ingredients moving through our network most this season — the full catalog runs considerably deeper.</p>
+    </div>
+    <div class="product-grid">
+
+      <div class="product-card" data-reveal>
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1768729341078-9da4e0ea959e?auto=format&fit=crop&w=700&q=80" alt="Turmeric root, slices, and powder">
+          <div class="product-badge" data-reveal="stamp">ORG<br>CERT</div>
+        </div>
+        <div class="product-body">
+          <div class="latin">Curcuma longa</div>
+          <h4>Turmeric Root Powder</h4>
+          <div class="product-meta"><span class="origin">India</span><span>95%+ curcuminoid</span></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-reveal>
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1508595165502-3e2652e5a405?auto=format&fit=crop&w=700&q=80" alt="Green leaf plants">
+          <div class="product-badge" data-reveal="stamp">ORG<br>CERT</div>
+        </div>
+        <div class="product-body">
+          <div class="latin">Moringa oleifera</div>
+          <h4>Moringa Leaf Powder</h4>
+          <div class="product-meta"><span class="origin">Ghana</span><span>Whole leaf</span></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-reveal>
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1602882112628-18cacc1a30a6?auto=format&fit=crop&w=700&q=80" alt="Close up green leaf plant">
+          <div class="product-badge" data-reveal="stamp">ORG<br>CERT</div>
+        </div>
+        <div class="product-body">
+          <div class="latin">Withania somnifera</div>
+          <h4>Ashwagandha Root</h4>
+          <div class="product-meta"><span class="origin">India</span><span>1.5% withanolides</span></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-reveal>
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1551772413-6c1b7dc18548?auto=format&fit=crop&w=700&q=80" alt="Leafy green botanicals">
+          <div class="product-badge" data-reveal="stamp">ORG<br>CERT</div>
+        </div>
+        <div class="product-body">
+          <div class="latin">Camellia sinensis</div>
+          <h4>Ceremonial Matcha</h4>
+          <div class="product-meta"><span class="origin">Japan</span><span>Stone-ground</span></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-reveal>
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1663325265966-0d17de3e85c5?auto=format&fit=crop&w=700&q=80" alt="Bowls of raw cacao and spice">
+          <div class="product-badge" data-reveal="stamp">ORG<br>CERT</div>
+        </div>
+        <div class="product-body">
+          <div class="latin">Theobroma cacao</div>
+          <h4>Raw Cacao Nibs</h4>
+          <div class="product-meta"><span class="origin">Peru</span><span>Single-origin</span></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-reveal>
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1771541897176-44a3e01dc484?auto=format&fit=crop&w=700&q=80" alt="Colorful spices arranged in metal bowls">
+          <div class="product-badge" data-reveal="stamp">ORG<br>CERT</div>
+        </div>
+        <div class="product-body">
+          <div class="latin">Zingiber officinale</div>
+          <h4>Ginger Root Powder</h4>
+          <div class="product-meta"><span class="origin">Sri Lanka</span><span>Steam-cleaned</span></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-reveal>
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1601585528379-0cfb189fa359?auto=format&fit=crop&w=700&q=80" alt="Assorted ground spices on a wooden table">
+          <div class="product-badge" data-reveal="stamp">ORG<br>CERT</div>
+        </div>
+        <div class="product-body">
+          <div class="latin">Cinnamomum verum</div>
+          <h4>Ceylon Cinnamon</h4>
+          <div class="product-meta"><span class="origin">Madagascar</span><span>Low coumarin</span></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-reveal>
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1629649407271-2dac934c1f1b?auto=format&fit=crop&w=700&q=80" alt="Assorted colorful ground spice powders">
+          <div class="product-badge" data-reveal="stamp">ORG<br>CERT</div>
+        </div>
+        <div class="product-body">
+          <div class="latin">Crocus sativus</div>
+          <h4>Whole Saffron Threads</h4>
+          <div class="product-meta"><span class="origin">Morocco</span><span>Grade I</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= STATS ================= -->
+<div class="stats-strip">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat" data-reveal>
+        <div class="num" data-count="18">0</div>
+        <div class="label">Countries of Origin</div>
+      </div>
+      <div class="stat" data-reveal>
+        <div class="num" data-count="240">0</div>
+        <div class="label">Ingredients in Catalog</div>
+      </div>
+      <div class="stat" data-reveal>
+        <div class="num" data-count="400">0</div>
+        <div class="label">Brands Supplied</div>
+      </div>
+      <div class="stat" data-reveal>
+        <div class="num" data-count="100" data-suffix="%">0</div>
+        <div class="label">Lots Traceable to Origin</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= CTA ================= -->
+<section class="cta-section" id="contact">
+  <div class="cta-bg"></div>
+  <div class="wrap">
+    <div class="cta-inner" data-reveal>
+      <div class="eyebrow">Get Started</div>
+      <h2>Let's talk about what you're formulating, stocking, or making.</h2>
+      <p>Request the current catalog, a sample kit, or a call with an account contact who can quote your specification directly.</p>
+      <div class="cta-actions">
+        <a href="mailto:sourcing@tahramilan.com" class="btn-primary">Request the Catalog →</a>
+        <a href="mailto:sourcing@tahramilan.com" class="btn-ghost">sourcing@tahramilan.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#top" class="logo">TAHRA MILAN<span>Ingredient Trading Co.</span></a>
+        <p>Premium organic ingredients for manufacturers, health &amp; wellness brands, and retailers — sourced across 18 countries, traceable to origin.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#serve">Who We Serve</a></li>
+          <li><a href="#difference">Our Difference</a></li>
+          <li><a href="#sourcing">Sourcing Network</a></li>
+          <li><a href="#ingredients">Ingredient Line</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:sourcing@tahramilan.com">sourcing@tahramilan.com</a></li>
+          <li><p>+1 (415) 555‑0148</p></li>
+          <li><p>San Francisco · Rotterdam</p></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Newsletter</h5>
+        <ul>
+          <li><p>Seasonal harvest notes, new origins, and catalog updates — no spam.</p></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 TAHRA MILAN INGREDIENT TRADING CO. — ALL LOTS TRACEABLE TO ORIGIN</p>
+      <div class="footer-stamp">EST.<br>PROVENANCE</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---------- Nav scroll state ----------
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ---------- Scroll reveal ----------
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  revealEls.forEach(el => io.observe(el));
+
+  // ---------- Marquee content ----------
+  const ingredients = [
+    ['Turmeric','India'], ['Moringa','Ghana'], ['Ashwagandha','India'], ['Matcha','Japan'],
+    ['Cacao','Peru'], ['Ginger','Sri Lanka'], ['Cinnamon','Madagascar'], ['Saffron','Morocco'],
+    ['Black Pepper','Vietnam'], ['Baobab','Senegal'], ['Maca Root','Peru'], ['Hibiscus','Egypt']
+  ];
+  const track = document.getElementById('marqueeTrack');
+  function buildMarquee(){
+    let html = '';
+    ingredients.forEach(([name, origin]) => {
+      html += `<div class="marquee-item">${name} <span class="dot"></span> <span class="origin">${origin}</span></div>`;
+    });
+    track.innerHTML = html + html; // duplicate for seamless loop
+  }
+  buildMarquee();
+
+  // ---------- Count-up stats ----------
+  const stats = document.querySelectorAll('.stat .num');
+  const statIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        const el = entry.target;
+        const target = parseInt(el.getAttribute('data-count'), 10);
+        const suffix = el.getAttribute('data-suffix') || '';
+        const duration = 1600;
+        const start = performance.now();
+        function tick(now){
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(eased * target) + suffix;
+          if(progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+        statIO.unobserve(el);
+      }
+    });
+  }, { threshold: 0.4 });
+  stats.forEach(el => statIO.observe(el));
+
+  // ---------- Hero floating image parallax ----------
+  const floatCards = document.querySelectorAll('.float-card');
+  document.querySelector('.hero').addEventListener('mousemove', (e) => {
+    const { innerWidth, innerHeight } = window;
+    const x = (e.clientX / innerWidth - 0.5) * 14;
+    const y = (e.clientY / innerHeight - 0.5) * 14;
+    floatCards.forEach((card, i) => {
+      const factor = i === 0 ? 1 : -1;
+      card.style.transform = `translate(${x*factor}px, ${y*factor}px)`;
+    });
+  });
+</script>
+</body>
+</html>
